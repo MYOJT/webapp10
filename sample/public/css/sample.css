@@ -43,7 +43,7 @@ header{
   align-items: center;
 
 }
-.headerCompanyName{
+.headerName{
   font-size:30px;
   padding-left:40px;
 }
@@ -69,56 +69,30 @@ header{
   bottom:2px;
 }
 
-/* ---mainScreen--- */
-.main_big{
-  width: 100%;
-  height:1200px;
-  /* padding-top:75px; */
-  display:flex;
-  justify-content:space-around;
-  /* align-items: center; */
-  position:static;
+
+
+/* ---screen-container--- */
+.screen-container{
+  width:100%;
+  height:800px;
   background-color:rgb(214, 206, 206);
-
-}
-.big-left{
-  height:1000px;
-
-}
-.dynamicPic1{
-  z-index:50;
-  width:600px;
-  padding-top:100px;
-  position:sticky;
-  top:100px;
-  animation: biggerPic 2.8s;
-}
-
-
-
-.big-right{
-  width:300px;
-  display:flex;
-  flex-direction: column;
-}
-.right-top{
-  height:550px;
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  align-items:center;
+  justify-content:space-around;
+  align-items: center;
 }
-.bigger{
-  display:block;
+#screen-item1{
+  width:400px;
+  height:10%;
 }
-.right-top_h1{
+#title-phrase{
   font-size:24px;
   transition:font-size 0.8s;
-  animation-name:biggerH1;
+  animation-name: biggerH1;
   animation-duration:2s;
   animation-delay: 2s;
 }
-.right-top_h1:hover{
+#title-phrase:hover{
   font-size: 40px;
   transition: font-size 1s;
 }
@@ -132,13 +106,5 @@ header{
   100%{
     font-size: 24px;
   }
-}
-
-
-.right-bottom{
-  height:550px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
 }
 

@@ -9,7 +9,7 @@
 </head>
 <body>
   <header>
-    <div class="headerCompanyName">MY TODO LIST</div>
+    <div class="headerName">MY TODO LIST</div>
     <ul class="headerUl">
       <li class="headerLi"><a href="">about us</a></li>
       <li class="headerLi"><a href="">service</a></li>
@@ -19,18 +19,19 @@
     </ul>
   </header>
   <main>
-    <section class="screen0">
-      <div class="main_big">
-        <div class="big-left">
-        </div>
-        <div class="big-right">
-          <div class="right-top">
-            <h1 class="right-top_h1">I<span class="bigger">Definitely do.</span></h1>
-          </div>
-          <div class="right-bottom">
-
-          </div>
-        </div>
+    <section class="screen-container">
+      <div id="screen-item1">
+        <h1 id="title-phrase">I<span class="bigger">Definitely do.</span></h1>
+      </div>
+      <div id="screen-item2">
+        <h1>item2</h1>
+        <input type="text" id="newTodo" value=""><br/>
+        <input type="button" id="addTodo" value="OK">
+        <ul id="TodoList">
+        </ul>
+      </div>
+      <div id="screen-item3">
+        <h1>item3</h1>
       </div>
     </section>
     <script src="js/index.js"></script>
