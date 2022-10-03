@@ -1,18 +1,47 @@
 /**
- * /app.js
+ * app.js
  */
 // express モジュールのインスタンス作成
 const express = require('express');
 const mysql = require('mysql');
+const axiosBase = require('axios');
+const router = express.Router();
 const app = express();
 // パス指定用モジュール
 const path = require('path');
 
-// DB接続
+/**
+ * axios通信
+ */
+const axios = axiosBase.create({
+  baseURL: 'http://localhost:4000',
+  headers:{
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
+  },
+  responseType: 'json'
+});
+
+// フロントエンドからのリクエストを受付け
+router.get('/',function(req,res,next){
+  axios.get('title')
+  .then(function(response){
+    res.render('index',response.data);
+  })
+  .catch(function(error){
+    console.log('ERROR!! occurred in Backend.')
+  });
+});
+module.exports = router;
+
+
+/**
+ * DB接続
+ */
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Nujabes654852',
+  password: 'ToCreateProductOfOjt',
   database: 'tododata'
 });
 connection.connect((err)=>{
