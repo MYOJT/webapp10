@@ -6,9 +6,13 @@ node app.js
 Running at Port 8080...
 が表示されたら、
 
-http://localhost:8080/
+https://localhost:8080/
 
 に接続する
 
-
+//
+・pid取得
+netstat -aon | find "8080"
+・タスクkill
+taskkill /pid <kill したい PID>
 
