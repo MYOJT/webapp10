@@ -20,18 +20,22 @@
   </header>
   <main>
     <section class="screen-container">
-      <div id="screen-item1">
-        <h1 id="title-phrase">I<span class="bigger">Definitely do.</span></h1>
-      </div>
       <div id="screen-item2">
-        <form>
-          <input type="text">
-          <input type="password">
-          <input type="submit">
-        </form>
+        <div id="item">
+          <h1>Login</h1>
+          <form action="html/todo.html" method="post" name="loginForm" id="loginForm">
+            <p>ID</p>
+            <input type="text" id="loginId" name="text" value="">
+            <p>PASSWORD</p>
+            <input type="password" id="password" name="password" value="">
+            <p></p>
+            <input type="Button" value="submit" id="loginButton" onclick="">
+          </form>
+          <p><a href="">新規登録はこちら</a></p>
+          </div>
       </div>
     </section>
-    <script src="js/index.js"></script>
+    <script type="module" src="js/login.js"></script>
   </main>
   <footer>
 
