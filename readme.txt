@@ -16,3 +16,6 @@ netstat -aon | find "8080"
 ・タスクkill
 taskkill /pid <kill したい PID>
 
+
+自動立ち上げバッチの作成
+

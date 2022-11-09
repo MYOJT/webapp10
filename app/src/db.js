@@ -44,15 +44,21 @@ pool.connect()
 
 //user
 //select
+/*
 const selectUser = {
   text:'select * from public.users where id = $1',
-  values:[2]};
+  values:[2]
+};
 pool.query(selectUser)
   .then(results => console.table(results.rows));
-
-
+*/
+/*
+const deleteAll = 'delete from public.users';
+pool.connect()
+  .then(()=>pool.query(deleteAll))
+  .then(results => console.table(results.rows));
 module.exports = pool;
-
+*/
 //export default pool;
 
 

@@ -38,9 +38,11 @@ module.exports = router;
 app.listen(8080, () => {
   console.log('Running at Port 8080...');
 });
+/*
 app.listen(3000, () => {
   console.log('Running at Port 3000...');
 });
+*/
 // http://localhost:8080/
 
 // 静的ファイルのルーティング
@@ -50,5 +52,5 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use((req, res) => {
   res.sendStatus(404);
 });
-
+module.exports = app;
 
