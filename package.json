@@ -2,7 +2,7 @@
   "name": "nodework",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -22,6 +22,7 @@ const axios = axiosBase.create({
   },
   responseType: 'json'
 });
+export default function connect() {
 
 // フロントエンドからのリクエストを受付け
 router.get('/',function(req,res,next){
@@ -33,7 +34,7 @@ router.get('/',function(req,res,next){
     console.log('ERROR!! occurred in Backend.')
   });
 });
-module.exports = router;
+//module.exports = router;
 // 8080番ポートで待ちうける
 app.listen(8080, () => {
   console.log('Running at Port 8080...');
@@ -52,5 +53,5 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use((req, res) => {
   res.sendStatus(404);
 });
-module.exports = app;
 
+}
