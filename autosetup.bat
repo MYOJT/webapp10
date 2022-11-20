@@ -12,11 +12,9 @@ if "%~1"=="-FIXED_CTRL_C" (
 setlocal enabledelayedexpansion
 cd %~dp0
 rem bundle.jsのフォルダに移動
-cd app
-cd src
-cd js
+
 echo Push enterkey when you start app. ^If you finish ,push CTRL + C.
 pause > null
-node index.js
+node app.js
 pause > null
 

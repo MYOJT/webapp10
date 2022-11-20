@@ -1,5 +1,4 @@
-//const pool = require('../../src/db.js');
-import pool from '../../src/db.js';
+const pool = require('db');
 
 const form = document.getElementById('loginForm');
 const loginButton =document.getElementById('loginButton');
@@ -11,7 +10,6 @@ loginButton.addEventListener('click',function() {
   console.log(loginId.value);
   console.log(password.value);
 });
-
 
 const selectUser = 'select * from public.users';
 pool.connect()
