@@ -1,25 +1,6 @@
-const { Pool } = require('pg');
-const { validateSchema } = require('webpack');
-/**
- * DB(PostgreSQL)接続
- */
-const pool = new Pool({
-  host: 'localhost',
-  user: 'postgres',
-  password: 'password',
-  database: 'postgres',
-  port: 5432,
-})
 
-pool.connect((err)=>{
-  if (err){
-    console.log('error connecting: ' + err.stack);
-    return;
-  }
-  console.log('connect success');
-
-});
 //create table
+/*
 const createTableUsers = 'create table if not exists public.users (id int not null primary key, password varchar(10) not null)';
 const createTableTodos = 'create table if not exists public.todos (id int not null primary key, text varchar(128) not null, create_date_time date, update_date_time date, delete_date_time date)';
 pool.connect()
