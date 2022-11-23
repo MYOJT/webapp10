@@ -1,9 +1,8 @@
-const pool = require('db');
-
 const form = document.getElementById('loginForm');
 const loginButton =document.getElementById('loginButton');
 const password =document.getElementById('password');
 const loginId = document.getElementById("loginId");
+
 loginButton.addEventListener('click',function() {
   //loginButton.setAttribute('value', '');
   console.log('clicked');

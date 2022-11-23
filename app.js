@@ -26,20 +26,16 @@ const axios = axiosBase.create({
 
 app.set('port',process.env.PORT || 8080);
 // 静的ファイルのルーティング
-//app.use(express.static(__dirname, + '/app'));
-app.use("/", express.static(__dirname, + '/app'));
+app.use(express.static('app'));
 
 app.get('/', function(req, res) {
-  res.sendFile('./app/src/html/todo.html', { root: __dirname });
+  res.sendFile('./app/html/login.html', { root: __dirname });
 });
-
 
 
 // 8080番ポートで待ちうける
 app.listen(app.get('port'), () => {
   console.log('Running at Port '+ app.get('port') +'...');
 });
-
-
 
 module.exports = app;
