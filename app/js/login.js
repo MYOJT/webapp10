@@ -1,35 +1,56 @@
 const form = document.getElementById('loginForm');
 const loginButton =document.getElementById('loginButton');
-const password =document.getElementById('password');
-const loginId = document.getElementById("loginId");
 
 loginButton.addEventListener('click',function() {
-  //loginButton.setAttribute('value', '');
-  console.log('clicked');
-  console.log(loginId.value);
-  console.log(password.value);
-});
-
-const selectUser = 'select * from public.users';
-pool.connect()
-  .then(()=>pool.query(selectUser))
-  .then(results => console.table(results.rows));
-/*
-pool.query(selectUser, [],
-  function(req, res){
-    for(var i = 0;i<res.rows.length;i++){
-      console.log(row.id + row.password);
-    }
+  const password =document.getElementById('password');
+  const loginId = document.getElementById("loginId");
+  fetch('/login', {
+    method: 'POST',
+    headers: new Headers({'Content-type' : 'application/json' }),
+    body: JSON.stringify({
+      id: loginId.value,
+      password: password.value
+    }),
   })
-*/
-
-router.get('/login',function(req,res,next){
-  axios.get('title')
-  .then(function(response){
-    res.render('index',response.data);
+  .then(function (response) {
+      if (response.status !== 200) {
+        console.log('Bad');
+        return;
+      }
+      console.log('OK');
   })
-  .catch(function(error){
-    console.log('ERROR!! occurred in Backend.')
+  .catch(function (err) {
+      console.log('Error Occurred');
   });
 });
 
+/*
+const url = '/router';
+const parameter = {
+  method: 'POST',
+  headers: new Headers({'Content-type' : 'application/x-www-form-urlencoded' }),
+    body: {
+      'id':loginId.value,
+      'password':password.value
+    }
+}
+
+const result = fetch(url,parameter).then((response)=>{
+  return response.json();
+})
+console.log("result");
+console.log(result);
+*/
+
+/*
+const xhr = new XMLHttpRequest();
+const url = 'http://localhost:8080/router'
+xhr.onreadystatechange = function() {
+  if(xhr.readyState === 4 && xhr.status === 200) {
+
+      console.log( xhr.responseText );
+  }
+}
+xhr.open('GET', url);
+xhr.send();
+*/
