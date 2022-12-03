@@ -20,27 +20,28 @@
   </header>
   <main>
     <section class="screen-container">
-      <div id="screen-item1">
-        <h1 id="title-phrase">I<span class="bigger">Definitely do.</span></h1>
-      </div>
       <div id="screen-item2">
-        <h1>item2</h1>
-        <input type="text" id="newTodo" value=""><br/>
-        <input type="button" id="addTodo" value="OK">
-        <ul id="TodoList">
-          <li value="2022/10/2 19:28:40">
-            a
-            <span>2022/10/2 19:28:40</span>
-            <input type="button" class="complete-todo" value="complete" onclick="completeTodo(this)">
-            <input type="hidden" value="2022/10/2 19:28:40"></input>
-          </li>
-        </ul>
+        <div id="item">
+          <h1>Login</h1>
+          <form action="/login" method="post" name="loginForm" id="loginForm">
+            <p>ID</p>
+            <input type="text" id="loginId" class="inputText" name="loginId" value="" autocomplete="">
+
+            <p>PASSWORD</p>
+            <input type="password" id="password" class="inputText" name="password" value="" autocomplete="">
+            <br>
+            <input type="Button" value="submit" id="loginButton" onclick="" autocomplete="">
+          </form>
+        </div>
+        <br>
+        <p><a href="">新規登録はこちら</a></p>
       </div>
-      <div id="screen-item3">
-        <h1>item3</h1>
+        <div>
+        <h2 id="errorMessage"></h2>
       </div>
     </section>
-    <script src="../js/todo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/login.js"></script>
   </main>
   <footer>
 

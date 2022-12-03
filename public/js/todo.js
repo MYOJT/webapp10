@@ -1,11 +1,50 @@
 'use strict';
+window.onload = (()=>{
+  //user情報取得(session)
+  const data = JSON.parse(sessionStorage.getItem('data'));
+  console.log('user_id = ' + data.user_id + ', user_name = ' + data.user_name);
+  console.log();
 
+  //todoを取得する
+  fetch('/todoAll', {
+    method: 'POST',
+    headers: new Headers({'Content-type' : 'application/json' }),
+    body: JSON.stringify({
+      user_id: data.user_id,
+    })
+  })
+  .then(response => {
+    if (response.status === 200) {
+      response.json().then(jsonParse =>{
+        console.log(jsonParse);
+      })
+    } else if (response.status === 403) {
+
+    } else {
+
+    }
+  })
+  .catch(err => {
+    console.log('[todo.js] Error Orrurred');
+    console.log('[todo.js] Error is' + err);
+  })
+
+  //todoを表示する
+})
 
 //ボタンが押された際、TODOを追加
 const addTodo = document.getElementById('addTodo');
-addTodo.addEventListener('click',function addTodoList() {
-  var newTodo = document.getElementById("newTodo").value;
 
+/*
+addTodo.addEventListener('click',
+*/
+function addTodoList() {
+  var newTodo = document.getElementById("newTodo").value;
+  let value = {
+    user_id:'',
+    todo:'',
+    time:''
+  }
   // li 要素の作成
   var li = document.createElement('li');
   li.innerText = newTodo;
@@ -19,7 +58,7 @@ addTodo.addEventListener('click',function addTodoList() {
   var Hour = now.getHours();
   var Min = now.getMinutes();
   var Sec =now.getSeconds();
-  var time = Year+'/'+Month+'/'+date+' '+Hour+':'+Min+':'+Sec;
+  var time = Year+'-'+Month+'-'+date+' '+Hour+':'+Min+':'+Sec;
   span.innerHTML = time
   li.appendChild(span);
   li.setAttribute('value', time);
@@ -40,7 +79,7 @@ addTodo.addEventListener('click',function addTodoList() {
   var ul = document.getElementById('TodoList');
   ul.appendChild(li);
 
-});
+}
 // todo削除処理
 
 function completeTodo(e){
