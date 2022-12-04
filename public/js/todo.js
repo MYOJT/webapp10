@@ -1,8 +1,9 @@
 'use strict';
+const TodoList = document.getElementById('TodoList');
 window.onload = (()=>{
   //user情報取得(session)
   const data = JSON.parse(sessionStorage.getItem('data'));
-  console.log('user_id = ' + data.user_id + ', user_name = ' + data.user_name);
+  console.log('[todo.js] user_id = ' + data.user_id + ', user_name = ' + data.user_name);
   console.log();
 
   //todoを取得する
@@ -15,13 +16,20 @@ window.onload = (()=>{
   })
   .then(response => {
     if (response.status === 200) {
+      console.log('[todo.js](/todoAll) 200 success');
       response.json().then(jsonParse =>{
-        console.log(jsonParse);
+        // console.table(jsonParse.data)
+        let value = []
+        for (let i of jsonParse.data){
+          value.push(i);
+        }
+
+
       })
     } else if (response.status === 403) {
-
+      console.log('[todo.js](/todoAll) 403 ');
     } else {
-
+      console.log('[todo.js](/todoAll) error occurres');
     }
   })
   .catch(err => {
@@ -34,6 +42,20 @@ window.onload = (()=>{
 
 //ボタンが押された際、TODOを追加
 const addTodo = document.getElementById('addTodo');
+
+// 値を受け取り表を作成するメソッド
+function displayTodoList(value){
+  var li = document.createElement('li');
+  
+  TodoList.appendChild()
+
+
+
+  for(let i of value){
+
+  }
+}
+
 
 /*
 addTodo.addEventListener('click',
@@ -81,10 +103,9 @@ function addTodoList() {
 
 }
 // todo削除処理
-
 function completeTodo(e){
-  var elem = e.target.val();
-  console.log(elem);
+  var elem = e.parentNode;
+  elem.remove();
 }
 
 

@@ -4,6 +4,8 @@
 // express モジュールのインスタンス作成
 const express = require('express');
 const app = express();
+const systemLogger = require('./log/log_env').systemLogger;
+const accessLogger = require('./log/log_env').accessLogger;
 const pool = require('./db/db').pool;
 const authUser = require('./db/db').authUser;
 const slectAllUser = require('./db/db').slectAllUser;
@@ -11,6 +13,7 @@ const slectAllTodo = require('./db/db').slectAllTodo;
 const router = require("./router/event");
 const bodyParser = require('body-parser');
 const path = require('path');
+
 
 app.set('port',process.env.PORT || 8080);
 // 静的ファイルのルーティング
@@ -20,12 +23,14 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
+app.use(log4js.connectLogger(accessLogger));
+
 
 // 8080番ポートで待ちうける
 app.listen(app.get('port'), () => {
   console.log('[app.js] Running at Port '+ app.get('port') +'...');
 });
-
+systemLogger.info("Express start");
 app.get('/', function(req, res) {
   res.sendFile('./public/html/login.html', { root: __dirname });
 });
@@ -105,8 +110,8 @@ app.post('/todoAll', function(req, res) {
         console.log('[app.js](/todoAll) success');
         res.status(200).send({
           code:200,
-          success:'200 success login',
-          data:results
+          success:'200 success take data from todos',
+          data:results.rows
         });
       }
     })

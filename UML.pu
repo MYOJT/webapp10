@@ -1,0 +1,26 @@
+@startuml app
+Actor User
+participant "認証画面" as login
+database "ユーザ情報" as userDB
+participant "todo画面" as todo
+database "todo情報" as todoDB
+
+User -> login : ログイン要求(user_id,password)
+login -> userDB : ユーザ情報検索
+userDB -> login : 検索結果返却
+
+alt user_id, password不一致
+    User <-- login : ログインに失敗しました
+else user_id, password一致
+    User <-- login : ログインに成功しました
+end
+
+
+
+
+
+
+
+
+@enduml
+' alt + d でプレビュー表示
