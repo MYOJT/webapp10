@@ -12,8 +12,8 @@ const pool = new Pool({
 })
 
 //create table
-const createTableUsers = 'create table if not exists public.users (user_id int not null primary key, user_name varchar(20) not null, password varchar(20) not null)';
-const createTableTodos = 'create table if not exists public.todos (todo_id int not null primary key, user_id int not null, todo varchar(128) not null, create_date_time date, update_date_time date, delete_date_time date)';
+const createTableUsers = 'create table if not exists public.users (user_id serial not null primary key, user_name varchar(20) not null, password varchar(20) not null)';
+const createTableTodos = 'create table if not exists public.todos (todo_id serial not null primary key, user_id int not null, todo varchar(128) not null, create_date_time timestamp, update_date_time timestamp, delete_date_time timestamp)';
 pool.connect()
   .then(()=>pool.query(createTableUsers))
   .catch((e => console.log(e)));
@@ -37,11 +37,12 @@ const deleteUser = 'delete from public.users where id = $1';
 /* TODOS TABLE */
 /*****************************************************************************************/
 // select all todos
-const slectAllTodo = 'select * from public.todos where user_id = $1 AND delete_date_time is null order by todo_id';
+const slectAllTodo = 'select todo_id, user_id, todo, TO_CHAR(create_date_time, \'YYYY-MM-DD HH24:MI:SS\') as create_date_time from public.todos where user_id = $1 AND delete_date_time is null order by todo_id';
 // Insert todo
-const insertTodo = 'insert into public.todos values ($1, $2)';
+const insertTodo = 'insert into public.todos (user_id, todo, create_date_time) values ($1, $2, $3)';
 // delete todo
-const deleteTodo = 'update public.todos set delete_date_time = ($1) where id = ($2)';
+const deleteTodo = 'update public.todos set delete_date_time = ($1) where todo_id = ($2)';
+
 
 
 module.exports.pool = pool ;
@@ -50,6 +51,8 @@ module.exports.slectAllUser = slectAllUser;
 module.exports.insertUser = insertUser;
 module.exports.deleteUser = deleteUser;
 module.exports.slectAllTodo = slectAllTodo;
+module.exports.insertTodo = insertTodo;
+module.exports.deleteTodo = deleteTodo;
 
 
 

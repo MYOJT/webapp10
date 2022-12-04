@@ -17,12 +17,12 @@ loginButton.addEventListener('click',function(event) {
   .then(response => {
       if (response.status === 200) {
         response.json().then(jsonParse =>{
-          console.log('[login.js] 200 success');
+          console.log('[login.js](/login)  200 success');
           let data = {
             user_id:jsonParse.data.user_id,
             user_name:jsonParse.data.user_name
           }
-          console.log(jsonParse.data.id  + ' '+ jsonParse.data.user_id);
+          console.log('[login.js](/login) ' + jsonParse.data.id  + ' '+ jsonParse.data.user_id);
           // sessionに格納
           sessionStorage.setItem('data',JSON.stringify(data));
           let url = 'html/todo.html';
@@ -30,12 +30,12 @@ loginButton.addEventListener('click',function(event) {
 
         })
       } else if (response.status === 403) {
-        console.log('[login.js] 403 success');
+        console.log('[login.js](/login) 403 success');
         errorMessage.innerText = 'Incorrect id or password';
       }
   })
   .catch(err => {
-      console.log('[login.js] Error Occurred');
+      console.log('[login.js](/login) Error Occurred');
   });
 });
 
