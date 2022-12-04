@@ -19,9 +19,11 @@ window.onload = (()=>{
       console.log('[todo.js](/todoAll) 200 success');
       response.json().then(jsonParse =>{
         // console.table(jsonParse.data)
-        let value = []
+        let value = [];
         for (let i of jsonParse.data){
           value.push(i);
+          // 画面にDBのtodoを表示
+          displayTodoList(i.todo,0);
         }
 
 
@@ -36,41 +38,36 @@ window.onload = (()=>{
     console.log('[todo.js] Error Orrurred');
     console.log('[todo.js] Error is' + err);
   })
-
-  //todoを表示する
 })
 
 //ボタンが押された際、TODOを追加
 const addTodo = document.getElementById('addTodo');
+addTodo.addEventListener('click',()=>{
+  displayTodoList('',1);
+})
 
-// 値を受け取り表を作成するメソッド
-function displayTodoList(value){
-  var li = document.createElement('li');
-  
-  TodoList.appendChild()
-
-
-
-  for(let i of value){
-
-  }
+// todo削除処理
+function completeTodo(e){
+  var elem = e.parentNode;
+  elem.remove();
 }
 
 
 /*
-addTodo.addEventListener('click',
+todoの内容を引数に、li要素を作成
+todo : todo文
+num : 初期表示 0, 追加 1
 */
-function addTodoList() {
-  var newTodo = document.getElementById("newTodo").value;
-  let value = {
-    user_id:'',
-    todo:'',
-    time:''
-  }
-  // li 要素の作成
+function displayTodoList (todo, num){
   var li = document.createElement('li');
-  li.innerText = newTodo;
-
+  // li 要素の作成
+  if(num === 0){
+    li.innerText = todo;
+  } else {
+    var newTodo = document.getElementById("newTodo").value;
+    var li = document.createElement('li');
+    li.innerText = newTodo;
+  }
   // 日時情報の取得と記載
   var span = document.createElement('span');
   var now = new Date();
@@ -100,14 +97,7 @@ function addTodoList() {
   // リストに追加
   var ul = document.getElementById('TodoList');
   ul.appendChild(li);
-
 }
-// todo削除処理
-function completeTodo(e){
-  var elem = e.parentNode;
-  elem.remove();
-}
-
 
 
 

@@ -4,8 +4,9 @@
 // express モジュールのインスタンス作成
 const express = require('express');
 const app = express();
-const systemLogger = require('./log/log_env').systemLogger;
-const accessLogger = require('./log/log_env').accessLogger;
+const log4js = require('./log_env').log4js;
+const systemLogger = require('./log_env').systemLogger;
+const accessLogger = require('./log_env').accessLogger;
 const pool = require('./db/db').pool;
 const authUser = require('./db/db').authUser;
 const slectAllUser = require('./db/db').slectAllUser;
