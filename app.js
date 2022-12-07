@@ -159,7 +159,26 @@ app.post('/deleteTodo',function(req, res, next){
   console.log('[app.js](/deleteTodo)');
   let user_id = req.body.user_id;
   let todo_id = req.body.todo_id;
-  let delete_id = req.body.user_id;
+  pool.query(insertTodo,[user_id, todo_id],
+    (err,results)=>{
+      if(err){
+        console.log('[app.js](/deleteTodo) err orrurred');
+        res.status(400).send({
+          code:400,
+          success:'400 error occurred',
+          data:null
+        });
+        line();
+      } else {
+        console.log('[app.js](/deleteTodo) success');
+        res.status(200).send({
+          code:200,
+          success:'200 success insert todo',
+          data:results
+        });
+        line();
+      }
+    })
 })
 
 function line(){

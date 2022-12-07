@@ -64,6 +64,19 @@ function completeTodo(e){
       todo_id: deleteTodoId,
     })
   })
+  .then(response => {
+    if (response.status === 200) {
+      console.log('[todo.js](/deleteTodo) 200 success');
+    } else if (response.status === 403) {
+      console.log('[todo.js](/deleteTodo) 403 ');
+    } else {
+      console.log('[todo.js](/deleteTodo) error occurres');
+    }
+  })
+  .catch(err => {
+    console.log('[todo.js] Error Orrurred');
+    console.log('[todo.js] Error is' + err);
+  })
 
 
 

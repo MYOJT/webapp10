@@ -41,7 +41,7 @@ const slectAllTodo = 'select todo_id, user_id, todo, TO_CHAR(create_date_time, \
 // Insert todo
 const insertTodo = 'insert into public.todos (user_id, todo, create_date_time) values ($1, $2, $3)';
 // delete todo
-const deleteTodo = 'update public.todos set delete_date_time = ($1) where todo_id = ($2)';
+const deleteTodo = 'update public.todos set delete_date_time = CURRENT_TIMESTAMP where user_id = $1 and todo_id = $2';
 
 
 
